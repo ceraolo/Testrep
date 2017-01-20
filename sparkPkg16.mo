@@ -1,6 +1,6 @@
 package sparkPkg16 "Spark package year 2016 - with zener clamp"
   package C_based
-    model Cspark0 "Solo carica induttore"
+    model Cspark0_ "Solo carica induttore"
       Modelica.Electrical.Analog.Sources.ConstantVoltage Edc(V=14) annotation (
           Placement(visible=true, transformation(
             origin={-64,-16},
@@ -17,8 +17,8 @@ package sparkPkg16 "Spark package year 2016 - with zener clamp"
             extent={{-10,-10},{10,10}},
             rotation=-90)));
       Modelica.Electrical.Analog.Basic.Ground ground annotation (Placement(
-            visible=true, transformation(extent={{-74, -64}, {-54, -44}}, rotation=
-               0)));
+            visible=true, transformation(extent={{-74,-64},{-54,-44}}, rotation
+              =0)));
       Modelica.Electrical.Analog.Ideal.IdealClosingSwitch clSw annotation (
           Placement(visible=true, transformation(
             origin={8,-34},
@@ -26,25 +26,40 @@ package sparkPkg16 "Spark package year 2016 - with zener clamp"
             rotation=-90)));
       Modelica.Blocks.Sources.BooleanStep booleanStep(startTime=0.003,
           startValue=true) annotation (Placement(visible=true, transformation(
-              extent={{62, -48}, {42, -28}}, rotation=0)));
+              extent={{62,-48},{42,-28}}, rotation=0)));
       Modelica.Electrical.Analog.Basic.Inductor inductor(L=2.8e-3) annotation (
           Placement(visible=true, transformation(
             origin={-8,32},
             extent={{-10,-10},{10,10}},
             rotation=-90)));
     equation
-      connect(Edc.n, C.n) annotation(Line(points = {{-64, -26}, {-64, -36}, {-24, -36}, {-24, -32}}, color = {0, 0, 255}));
-      connect(Edc.p, Rbat.p) annotation(Line(points = {{-64, -6}, {-64, 6}}, color = {0, 0, 255}));
-      connect(inductor.p, Rbat.n) annotation(Line(points = {{-8, 42}, {-8, 50}, {-64, 50}, {-64, 26}}, color = {0, 0, 255}));
-      connect(ground.p, C.n) annotation(Line(points = {{-64, -44}, {-64, -36}, {-24, -36}, {-24, -32}}, color = {0, 0, 255}));
-      connect(clSw.p, C.p) annotation(Line(points = {{8, -24}, {8, -2}, {-24, -2}, {-24, -12}}, color = {0, 0, 255}));
-      connect(clSw.n, C.n) annotation(Line(points = {{8, -44}, {-24, -44}, {-24, -32}}, color = {0, 0, 255}));
-      connect(inductor.n, C.p) annotation(Line(points = {{-8, 22}, {-8, -2}, {-24, -2}, {-24, -12}}, color = {0, 0, 255}));
-      connect(clSw.control, booleanStep.y) annotation(Line(points = {{15, -34}, {26, -34}, {26, -38}, {41, -38}}, color = {255, 0, 255}));
+      connect(Edc.n, C.n) annotation (Line(points={{-64,-26},{-64,-36},{-24,-36},
+              {-24,-32}}, color={0,0,255}));
+      connect(Edc.p, Rbat.p)
+        annotation (Line(points={{-64,-6},{-64,6}}, color={0,0,255}));
+      connect(inductor.p, Rbat.n) annotation (Line(points={{-8,42},{-8,50},{-64,
+              50},{-64,26}}, color={0,0,255}));
+      connect(ground.p, C.n) annotation (Line(points={{-64,-44},{-64,-36},{-24,
+              -36},{-24,-32}}, color={0,0,255}));
+      connect(clSw.p, C.p) annotation (Line(points={{8,-24},{8,-2},{-24,-2},{-24,
+              -12}}, color={0,0,255}));
+      connect(clSw.n, C.n) annotation (Line(points={{8,-44},{-24,-44},{-24,-32}},
+            color={0,0,255}));
+      connect(inductor.n, C.p) annotation (Line(points={{-8,22},{-8,-2},{-24,-2},
+              {-24,-12}}, color={0,0,255}));
+      connect(clSw.control, booleanStep.y) annotation (Line(points={{15,-34},{
+              26,-34},{26,-38},{41,-38}}, color={255,0,255}));
       annotation (
-        Diagram(coordinateSystem(preserveAspectRatio=false, extent = {{-80, -60}, {80, 60}}), graphics={Text(origin = {35.35, 1.78}, lineColor = {0, 0, 255}, extent = {{-21.35, 28.22}, {34.65, 8.22}}, textString = "Accensione Motori
+        Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-80,-60},{
+                80,60}}), graphics={Text(
+              origin={35.35,1.78},
+              lineColor={0,0,255},
+              extent={{-21.35,28.22},{34.65,8.22}},
+              textString="Accensione Motori
     ad Accensione
-    Comandata", fontName = "MS Shell Dlg 2", horizontalAlignment = TextAlignment.Left)}),
+    Comandata",
+              fontName="MS Shell Dlg 2",
+              horizontalAlignment=TextAlignment.Left)}),
         Icon(coordinateSystem(extent={{-80,-60},{80,60}}, preserveAspectRatio=
                 false)),
         experiment(StopTime=0.008, __Dymola_NumberOfIntervals=2000),
@@ -53,7 +68,7 @@ package sparkPkg16 "Spark package year 2016 - with zener clamp"
 <p>Prima simulazione che mostra il caricamento dell&apos;induttore e la successiva oscillazione R-C.</p>
 </html>"),
         __OpenModelica_commandLineOptions="");
-    end Cspark0;
+    end Cspark0_;
 
     model Cspark1 "Induttore-trasformatore"
       Modelica.Electrical.Analog.Sources.ConstantVoltage Edc(V=14) annotation (
@@ -142,10 +157,10 @@ package sparkPkg16 "Spark package year 2016 - with zener clamp"
           smooth=Smooth.None));
       annotation (
         Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-60},
-                {80,80}}),   graphics={Text(
+                {80,80}}), graphics={Text(
                   extent={{10,34},{76,28}},
                   lineColor={0,0,255},
-              textString="Accensione Motori 
+                  textString="Accensione Motori 
 ad Accensione
 Comandata")}),
         Icon(coordinateSystem(extent={{-100,-60},{80,80}})),
@@ -1799,7 +1814,7 @@ del riferim.")}),
             rotation=-90,
             origin={8,16})));
     equation
-      der(enArc) =arcSW.p.v*arcSW.i;
+      der(enArc) = arcSW.p.v*arcSW.i;
       connect(Edc.p, Rbat.p) annotation (Line(
           points={{-100,8},{-100,20}},
           color={0,0,255},
@@ -1984,8 +1999,8 @@ del riferim.")}),
       annotation (
         Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-60},
                 {100,80}})),
-        Icon(coordinateSystem(extent={{-100,-60},{100,80}}, preserveAspectRatio=
-               false)),
+        Icon(coordinateSystem(extent={{-100,-60},{100,80}}, preserveAspectRatio
+              =false)),
         experiment(
           StopTime=0.008,
           StartTime=0,
@@ -2281,7 +2296,8 @@ Manca lo strappo della corrente a fine arco")}),
           Documentation(info="<html>
 <p>In questo modello l&apos;arco &egrave; modellizzato come una tensione costante in serie con una resistenza.</p>
 <p>L&apos;interruzione avviene mediante un secondo interruttore, pilotato per il momento sulla base del tempo. Un modello pi&ugrave; realistico &egrave; invece corrispondente al raggiungimento di una soglia minima di corrente iHold (modelli successivi)</p>
-</html>"),Diagram(coordinateSystem(
+</html>"),
+          Diagram(coordinateSystem(
               extent={{-120,-100},{120,100}},
               preserveAspectRatio=false,
               initialScale=0.1,
@@ -2484,7 +2500,8 @@ con attivazione a soglia di corrente")}),
 <p>In questo modello si sono integrati due modelli di arco: l&apos;innesco dell&apos;arco con tensione costante ins ereie con resistenza, con closeArc; l&apos;estinzione dell&apos;arco con tensione crescente che forza la corrente a 0 con openArc.</p>
 <p>La logica di interruzione dell&apos;arco &egrave; realizzata sulla base del raggiungimento di una soglia minima di corrente.</p>
 <p>Questa logica &egrave; per&ograve; incapsulata solo parzialmente: manca di mettere in un unico controllore anche la lgcica di openArc.</p>
-</html>"),experiment(
+</html>"),
+          experiment(
             StartTime=0,
             StopTime=0.008,
             Tolerance=0.0001,
@@ -2632,8 +2649,8 @@ con attivazione a soglia di corrente")}),
         color={255,0,255},
         smooth=Smooth.None));
     annotation (Diagram(coordinateSystem(extent={{-100,-100},{100,100}},
-            preserveAspectRatio=false), graphics), Icon(coordinateSystem(extent=
-             {{-100,-100},{100,100}}, preserveAspectRatio=false), graphics));
+            preserveAspectRatio=false), graphics), Icon(coordinateSystem(extent
+            ={{-100,-100},{100,100}}, preserveAspectRatio=false), graphics));
   end ArcActivation;
   annotation (uses(Modelica(version="3.2.2")));
 end sparkPkg16;
